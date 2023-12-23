@@ -119,18 +119,18 @@ public class Library_Project {
 
 
 
-//        //simple demo
-//        Author a1 = new Author(1,"ayman","hebron","0568248992");
-//        
-//        Book b1 = new Book("Book1", a1, 101, "Fiction", 1, "2023-01-01", false);
-//        
-//        Magazine m1 = new Magazine("Magazine1", a1, 201, "Science", 1, "2023-02-01", false, 1, "2023-01-15");
-//        
-//        Journal j1 = new Journal("Journal1", a1, 301, "Technology", 1, "2023-03-01", false, "Conference1", 1);
-//        
-//        Student st1 = new Student(201125, "alaa", "ramallah", "03-03-2002", "Computer Science");
-//        
-//        Library L1 = new Library();
-//        
-//        Loan loan1 = new Loan(st1, List.of(b1, m1, j1), "2023-02-15");
+        //simple demo
+        Author a1 = new Author(1,"ayman","hebron","0568248992");
+        
+        Book b1 = new Book("Book1", a1, 101, "Fiction", 1, "2023-01-01", false);
+        
+        Magazine m1 = new Magazine("Magazine1", a1, 201, "Science", 1, "2023-02-01", false, 1, "2023-01-15");
+        
+        Journal j1 = new Journal("Journal1", a1, 301, "Technology", 1, "2023-03-01", false, "Conference1", 1);
+        
+        Student st1 = new Student(201125, "alaa", "ramallah", "03-03-2002", "Computer Science");
+        
+        Library L1 = new Library();
+        
+        Loan loan1 = new Loan(st1, List.of(b1, m1, j1), "2023-02-15");
     }
