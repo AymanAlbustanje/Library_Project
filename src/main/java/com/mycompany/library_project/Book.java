@@ -5,7 +5,7 @@
 package com.mycompany.library_project;
 
 public class Book implements Display {
-    private String title;
+    public String title;
     private Author author;
     private int no;
     private String genre;
@@ -23,6 +23,7 @@ public class Book implements Display {
         this.onLoan = onLoan;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
@@ -81,18 +82,14 @@ public class Book implements Display {
 
     
 
+    @Override
     public String getInfo() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author=" + author +
-                ", no=" + no +
-                ", genre='" + genre + '\'' +
-                ", version=" + version +
-                ", date='" + date + '\'' +
-                ", onLoan=" + onLoan +
-                '}';
+        return String.format("Book Information:%nTitle: %s%nAuthor: %s%nNumber: %d%nGenre: %s%nVersion: %d%nDate: %s%nOn Loan: %b",
+                title, author, no, genre, version, date, onLoan);
     }
+    
 
+    @Override
     public boolean inLoan() {
         return onLoan;
     }

@@ -9,7 +9,7 @@ package com.mycompany.library_project;
  * @author 201125
  */
 public class MainUI extends javax.swing.JFrame {
-
+    private Library library;
     /**
      * Creates new form MainUI
      */
@@ -17,6 +17,19 @@ public class MainUI extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         ;
+        library = new Library();
+        Author a1 = new Author(1, "ayman", "dura", "21/7/2002");
+        Author a2 = new Author(2, "mohannad", "dura", "21/7/2002");
+        Author a3 = new Author(3, "alaa", "dura", "21/7/2002");
+        Author a4 = new Author(4, "ahmad", "dura", "21/7/2002");
+        Author a5 = new Author(5, "ali", "dura", "21/7/2002");
+        library.addAuthor(a1);
+        library.addAuthor(a2);
+        library.addAuthor(a3);
+        library.addAuthor(a4);
+        library.addAuthor(a5);
+        
+
     }
      
     
@@ -87,6 +100,8 @@ public class MainUI extends javax.swing.JFrame {
         title_book_searchl = new javax.swing.JLabel();
         title_book_searcht = new javax.swing.JTextField();
         search_bookb = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        search_resultt = new javax.swing.JTextArea();
         loans_panel = new javax.swing.JPanel();
         title_book_loant = new javax.swing.JTextField();
         title_book_loanl = new javax.swing.JLabel();
@@ -111,6 +126,7 @@ public class MainUI extends javax.swing.JFrame {
         jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Library Final Project");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("My Library");
@@ -226,6 +242,11 @@ public class MainUI extends javax.swing.JFrame {
         issue_No_magazinel.setText("Issue No");
 
         add_magazineb.setText("Add");
+        add_magazineb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_magazinebActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout addmagazine_panelLayout = new javax.swing.GroupLayout(addmagazine_panel);
         addmagazine_panel.setLayout(addmagazine_panelLayout);
@@ -339,6 +360,11 @@ public class MainUI extends javax.swing.JFrame {
         conference_No_journall.setText("Conference No:");
 
         add_journalb.setText("Add");
+        add_journalb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_journalbActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout addjournal_panelLayout = new javax.swing.GroupLayout(addjournal_panel);
         addjournal_panel.setLayout(addjournal_panelLayout);
@@ -417,21 +443,34 @@ public class MainUI extends javax.swing.JFrame {
         title_book_searchl.setText("Book Title:");
 
         search_bookb.setText("Search");
+        search_bookb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search_bookbActionPerformed(evt);
+            }
+        });
+
+        search_resultt.setColumns(20);
+        search_resultt.setRows(5);
+        jScrollPane1.setViewportView(search_resultt);
 
         javax.swing.GroupLayout search_panelLayout = new javax.swing.GroupLayout(search_panel);
         search_panel.setLayout(search_panelLayout);
         search_panelLayout.setHorizontalGroup(
             search_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, search_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(search_bookb, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
             .addGroup(search_panelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(title_book_searchl, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(title_book_searcht, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                 .addGap(278, 278, 278))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, search_panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(search_bookb, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+            .addGroup(search_panelLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         search_panelLayout.setVerticalGroup(
             search_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,7 +479,9 @@ public class MainUI extends javax.swing.JFrame {
                 .addGroup(search_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(title_book_searchl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(title_book_searcht, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(search_bookb)
                 .addGap(27, 27, 27))
         );
@@ -611,7 +652,101 @@ public class MainUI extends javax.swing.JFrame {
 
     private void add_bookbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_bookbActionPerformed
         // TODO add your handling code here:
+    String title = title_bookt.getText();
+    int bookNo = Integer.parseInt(No_bookt.getText());
+    String authorName = author_bookt.getText();
+    String genre = genre_bookt.getText();
+    int version = Integer.parseInt(version_bookt.getText());
+    String addDate = add_date_bookt.getText();
+
+    Author author = library.getAuthorByName(authorName);
+
+    // Create a new Book object
+    Book newBook = new Book(title, author, bookNo, genre, version, addDate, false);
+
+    // Add the new book to the library
+    library.addBook(newBook);
+
+    // Clear the text fields after adding the book
+        title_bookt.setText("");
+        No_bookt.setText("");
+        author_bookt.setText("");
+        genre_bookt.setText("");
+        version_bookt.setText("");
+        add_date_bookt.setText("");
     }//GEN-LAST:event_add_bookbActionPerformed
+
+    private void add_magazinebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_magazinebActionPerformed
+        // TODO add your handling code here:
+        String title = title_magazinet.getText();
+        int magazineNo = Integer.parseInt(No_magazinet.getText());
+        String authorName = author_magazinet.getText();
+        String genre = genre_magazinet.getText();
+        int version = Integer.parseInt(version_magazinet.getText());
+        String addDate = add_date_magazinet.getText();
+        String releaseDate = release_date_magazinet.getText();
+        int issueNo = Integer.parseInt(issue_No_magazinet.getText());
+
+    // Assuming that you have a method to get an author by name from the library
+    Author author = library.getAuthorByName(authorName);
+
+    // Create a new Magazine object
+    Magazine newMagazine = new Magazine(title, author, magazineNo, genre, version, addDate, false, issueNo, releaseDate);
+
+    // Add the new magazine to the library
+    library.addMagazine(newMagazine);
+
+    // Clear the text fields after adding the magazine
+        title_magazinet.setText("");
+        No_magazinet.setText("");
+        author_magazinet.setText("");
+        genre_magazinet.setText("");
+        version_magazinet.setText("");
+        add_date_magazinet.setText("");
+        release_date_magazinet.setText("");
+        issue_No_magazinet.setText("");
+    }//GEN-LAST:event_add_magazinebActionPerformed
+
+    private void add_journalbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_journalbActionPerformed
+        // TODO add your handling code here:
+        String title = title_journalt.getText();
+        int journalNo = Integer.parseInt(No_journalt.getText());
+        String authorName = author_journalt.getText();
+        String genre = genre_journalt.getText();
+        int version = Integer.parseInt(version_journalt.getText());
+        String addDate = add_date_journalt.getText();
+        int issueNo = Integer.parseInt(issue_No_journalt.getText());
+        int conferenceNo = Integer.parseInt(conference_No_journalt.getText());
+
+        // Assuming that you have a method to get an author by name from the library
+        Author author = library.getAuthorByName(authorName);
+
+        // Create a new Journal object
+        Journal newJournal = new Journal(title, author, journalNo, genre, version, addDate, false, issueNo, conferenceNo);
+
+        // Add the new journal to the library
+        library.addJournal(newJournal);
+
+    // Clear the text fields after adding the journal
+        title_journalt.setText("");
+        No_journalt.setText("");
+        author_journalt.setText("");
+        genre_journalt.setText("");
+        version_journalt.setText("");
+        add_date_journalt.setText("");
+        issue_No_journalt.setText("");
+        conference_No_journalt.setText("");
+    }//GEN-LAST:event_add_journalbActionPerformed
+
+    private void search_bookbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_bookbActionPerformed
+        // TODO add your handling code here:
+        // Get the title to search
+    String searchTitle = title_book_searcht.getText();
+
+    // Perform the search and display the result in the text area
+    String searchResult = library.searchByTitle(searchTitle);
+    search_resultt.setText(searchResult);
+    }//GEN-LAST:event_search_bookbActionPerformed
 
     /**
      * @param args the command line arguments
@@ -693,6 +828,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loan_bookb;
     private javax.swing.JPanel loans_panel;
     private javax.swing.JLabel majorl;
@@ -706,6 +842,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField release_date_magazinet;
     private javax.swing.JButton search_bookb;
     private javax.swing.JPanel search_panel;
+    private javax.swing.JTextArea search_resultt;
     private javax.swing.JTabbedPane tappedpane;
     private javax.swing.JLabel title_book_loanl;
     private javax.swing.JTextField title_book_loant;

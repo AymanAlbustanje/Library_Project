@@ -49,7 +49,10 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author{" + "id=" + id + ", name=" + name + ", address=" + address + ", birthDate=" + birthDate + '}';
+        return name;
+    }
+    public String getInfo() {
+        return String.format("Author Information:%nName: %s", name);
     }
 
     

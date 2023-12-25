@@ -1,4 +1,3 @@
-com\mycompany\library_project\Library_Project.class
 com\mycompany\library_project\Library.class
 com\mycompany\library_project\Display.class
 com\mycompany\library_project\MainUI$1.class
@@ -9,5 +8,7 @@ com\mycompany\library_project\MainUI$3.class
 com\mycompany\library_project\Magazine.class
 com\mycompany\library_project\Book.class
 com\mycompany\library_project\MainUI.class
+com\mycompany\library_project\MainUI$5.class
+com\mycompany\library_project\MainUI$4.class
 com\mycompany\library_project\Journal.class
 com\mycompany\library_project\Loan.class

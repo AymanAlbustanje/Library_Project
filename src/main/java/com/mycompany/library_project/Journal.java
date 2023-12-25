@@ -5,23 +5,30 @@
 package com.mycompany.library_project;
 
 public class Journal extends Book {
-    private String conferenceName;
     private int conferenceNo;
+    private int issueNo;
 
     public Journal(String title, Author author, int no, String genre, int version, String date,
-                   boolean onLoan, String conferenceName, int conferenceNo) {
+                   boolean onLoan, int conferenceNo, int issueNo) {
         super(title, author, no, genre, version, date, onLoan);
-        this.conferenceName = conferenceName;
         this.conferenceNo = conferenceNo;
+        this.issueNo = issueNo;
+    }
+    
+    @Override
+    public String getTitle() {
+        return title;
+    }
+    public int getIssueNo() {
+        return issueNo;
     }
 
-    public String getConferenceName() {
-        return conferenceName;
+    public void setIssueNo(int issueNo) {
+        this.issueNo = issueNo;
     }
-
-    public void setConferenceName(String conferenceName) {
-        this.conferenceName = conferenceName;
-    }
+    
+    
+    
 
     public int getConferenceNo() {
         return conferenceNo;
@@ -35,10 +42,10 @@ public class Journal extends Book {
 
     @Override
     public String getInfo() {
-        return super.getInfo() + " Journal{" +
-                "conferenceName='" + conferenceName + '\'' +
-                ", conferenceNo=" + conferenceNo +
-                '}';
+        return String.format("%s%nJournal Information:%nConference Number: %d%nIssue Number: %d",
+                super.getInfo(), conferenceNo, issueNo);
     }
+    
+    
 }
 

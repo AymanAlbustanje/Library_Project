@@ -14,7 +14,11 @@ public class Magazine extends Book {
         this.issueNo = issueNo;
         this.releaseDate = releaseDate;
     }
-
+    
+    public String getTitle() {
+        return title;
+    }
+    
     public int getIssueNo() {
         return issueNo;
     }
@@ -35,10 +39,10 @@ public class Magazine extends Book {
 
     @Override
     public String getInfo() {
-        return super.getInfo() + " Magazine{" +
-                "issueNo=" + issueNo +
-                ", releaseDate='" + releaseDate + '\'' +
-                '}';
+        return String.format("%s%nMagazine Information:%nIssue Number: %d%nRelease Date: %s",
+                super.getInfo(), issueNo, releaseDate);
     }
+    
+    
 }
 

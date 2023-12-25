@@ -4,14 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
+    private List<Journal> journals;
+    private List<Magazine> magazines;
+    private List<Author> authors;
     private List<Book> books;
     private List<Student> students;
     private List<Loan> loans;
 
     public Library() {
+        this.journals = new ArrayList<>();
+        this.magazines =new ArrayList<>();
+        this.authors = new ArrayList<>();
         this.books = new ArrayList<>();
         this.students = new ArrayList<>();
         this.loans = new ArrayList<>();
+    }
+
+    public List<Journal> getJournals() {
+        return journals;
+    }
+
+    public void setJournals(List<Journal> journals) {
+        this.journals = journals;
+    }
+    
+    public List<Magazine> getMagazines() {
+        return magazines;
+    }
+
+    public void setMagazines(List<Magazine> magazines) {
+        this.magazines = magazines;
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     public List<Book> getBooks() {
@@ -52,9 +82,26 @@ public class Library {
 
     public String searchByTitle(String title) {
         StringBuilder result = new StringBuilder();
-        for (Book book : books) {
-            if (book.getTitle().equalsIgnoreCase(title)) {
-                result.append(book.getInfo()).append("\n");
+
+        // Search for books
+        result.append("");
+        result.append(searchItemsByTitle(books, title));
+
+        // Search for magazines
+        result.append("");
+        result.append(searchItemsByTitle(magazines, title));
+
+        // Search for journals
+        result.append("");
+        result.append(searchItemsByTitle(journals, title));
+
+        return result.toString();
+    }
+    private <T extends Display> String searchItemsByTitle(List<T> items, String title) {
+        StringBuilder result = new StringBuilder();
+        for (T item : items) {
+            if (item.getTitle().equalsIgnoreCase(title)) {
+                result.append(item.getInfo()).append("\n");
             }
         }
         return result.toString();
@@ -89,5 +136,28 @@ public class Library {
         }
         return result.toString();
     }
+    
+    public void addJournal(Journal journal) {
+        journals.add(journal);
+    }
+    
+    public void addMagazine(Magazine magazine) {
+        magazines.add(magazine);
+    }
+
+    public void addAuthor(Author author) {
+    authors.add(author);
+    
+}
+    public Author getAuthorByName(String authorName) {
+        for (Author existingAuthor : authors) {
+            if (existingAuthor.getName().equalsIgnoreCase(authorName)) {
+                return existingAuthor;
+            }
+        }
+        // Handle the case where the author is not found (optional)
+        return null;
+    }
+    
 }
 
