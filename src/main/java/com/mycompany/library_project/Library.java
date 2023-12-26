@@ -1,9 +1,10 @@
 package com.mycompany.library_project;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library {
+public class Library implements Serializable {
     private List<Journal> journals;
     private List<Magazine> magazines;
     private List<Author> authors;

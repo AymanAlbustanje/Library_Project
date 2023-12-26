@@ -48,6 +48,8 @@ private Student findStudentByName(String name) {
         library.addAuthor(a5);
         
         
+        
+        
     }
      
     
@@ -709,12 +711,14 @@ private Student findStudentByName(String name) {
     private void loan_bookbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loan_bookbActionPerformed
         // TODO add your handling code here:
         int day = Integer.parseInt(dayt.getText());
+        int month = Integer.parseInt(montht.getText());
+        int year = Integer.parseInt(yeart.getText());
 
     // Adding 5 days to the value in dayt text field
     int newDay = day + 5;
 
     // Display the due date in the text area
-    due_date_loant.setText("Return the book before " + newDay + " days have passed");
+    due_date_loant.setText("Return the book before " + newDay + " / " + month + " / " + year + "");
 
     // Replace "Title of the Book" with the actual title from your text field
     String bookTitle = title_book_loant.getText();
