@@ -13,6 +13,24 @@ public class MainUI extends javax.swing.JFrame {
     /**
      * Creates new form MainUI
      */
+    private Book findBookByTitle(String title) {
+    for (Book book : library.getBooks()) {
+        if (book.getTitle().equalsIgnoreCase(title)) {
+            return book;
+        }
+    }
+    return null;
+}
+
+private Student findStudentByName(String name) {
+    for (Student student : library.getStudents()) {
+        if (student.getName().equalsIgnoreCase(name)) {
+            return student;
+        }
+    }
+    return null;
+}
+    
     public MainUI() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,7 +47,7 @@ public class MainUI extends javax.swing.JFrame {
         library.addAuthor(a4);
         library.addAuthor(a5);
         
-
+        
     }
      
     
@@ -108,6 +126,12 @@ public class MainUI extends javax.swing.JFrame {
         loan_bookb = new javax.swing.JButton();
         name_studentl = new javax.swing.JLabel();
         name_studentt = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        due_date_loant = new javax.swing.JTextArea();
+        yeart = new javax.swing.JTextField();
+        dayt = new javax.swing.JTextField();
+        montht = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         members_panel = new javax.swing.JPanel();
         id_studentl = new javax.swing.JLabel();
         id_studentt = new javax.swing.JTextField();
@@ -501,26 +525,49 @@ public class MainUI extends javax.swing.JFrame {
         name_studentl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         name_studentl.setText("Student name:");
 
+        due_date_loant.setColumns(20);
+        due_date_loant.setRows(5);
+        jScrollPane2.setViewportView(due_date_loant);
+
+        jLabel2.setText("loaning date:");
+
         javax.swing.GroupLayout loans_panelLayout = new javax.swing.GroupLayout(loans_panel);
         loans_panel.setLayout(loans_panelLayout);
         loans_panelLayout.setHorizontalGroup(
             loans_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loans_panelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(loan_bookb)
-                .addGap(32, 32, 32))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79))
             .addGroup(loans_panelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(loans_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loans_panelLayout.createSequentialGroup()
-                        .addComponent(title_book_loanl, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(title_book_loant, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loans_panelLayout.createSequentialGroup()
-                        .addComponent(name_studentl, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(name_studentt, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
-                .addGap(278, 278, 278))
+                        .addGroup(loans_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(loans_panelLayout.createSequentialGroup()
+                                .addGap(204, 204, 204)
+                                .addComponent(loan_bookb))
+                            .addComponent(jLabel2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(loans_panelLayout.createSequentialGroup()
+                        .addGroup(loans_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loans_panelLayout.createSequentialGroup()
+                                .addComponent(title_book_loanl, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(title_book_loant))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loans_panelLayout.createSequentialGroup()
+                                .addComponent(name_studentl, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(loans_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(name_studentt)
+                                    .addGroup(loans_panelLayout.createSequentialGroup()
+                                        .addComponent(dayt, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(montht, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(yeart, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(276, 276, 276))))
         );
         loans_panelLayout.setVerticalGroup(
             loans_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,9 +580,17 @@ public class MainUI extends javax.swing.JFrame {
                 .addGroup(loans_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name_studentl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name_studentt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(loans_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yeart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dayt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(montht, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(loan_bookb)
-                .addGap(30, 30, 30))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82))
         );
 
         tappedpane.addTab("Loans     ", loans_panel);
@@ -556,6 +611,11 @@ public class MainUI extends javax.swing.JFrame {
         majorl.setText("Major:");
 
         add_memberb.setText("Add");
+        add_memberb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_memberbActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout members_panelLayout = new javax.swing.GroupLayout(members_panel);
         members_panel.setLayout(members_panelLayout);
@@ -648,6 +708,24 @@ public class MainUI extends javax.swing.JFrame {
 
     private void loan_bookbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loan_bookbActionPerformed
         // TODO add your handling code here:
+        int day = Integer.parseInt(dayt.getText());
+
+    // Adding 5 days to the value in dayt text field
+    int newDay = day + 5;
+
+    // Display the due date in the text area
+    due_date_loant.setText("Return the book before " + newDay + " days have passed");
+
+    // Replace "Title of the Book" with the actual title from your text field
+    String bookTitle = title_book_loant.getText();
+
+    // Find the book by title in the library
+    Book foundBook = findBookByTitle(bookTitle);
+
+    // Set the loan value for the found book to true
+    if (foundBook != null) {
+        foundBook.setOnLoan(true);
+    }
     }//GEN-LAST:event_loan_bookbActionPerformed
 
     private void add_bookbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_bookbActionPerformed
@@ -748,6 +826,26 @@ public class MainUI extends javax.swing.JFrame {
     search_resultt.setText(searchResult);
     }//GEN-LAST:event_search_bookbActionPerformed
 
+    private void add_memberbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_memberbActionPerformed
+        // TODO add your handling code here:
+        int studentId = Integer.parseInt(id_studentt.getText());
+        String studentName = name_student_membert.getText();
+        String studentAddress = adress_membert.getText();
+        String studentBirthDate = birthdatet.getText();
+        String studentMajor = majort.getText();
+
+        Student newStudent = new Student(studentId, studentName, studentAddress, studentBirthDate, studentMajor);
+        library.addStudent(newStudent);
+        search_resultt.setText(newStudent.toString());
+        
+        
+        id_studentt.setText("");
+        name_student_membert.setText("");
+        adress_membert.setText("");
+        birthdatet.setText("");
+        majort.setText("");
+    }//GEN-LAST:event_add_memberbActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -813,6 +911,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField birthdatet;
     private javax.swing.JLabel conference_No_journall;
     private javax.swing.JTextField conference_No_journalt;
+    private javax.swing.JTextField dayt;
+    private javax.swing.JTextArea due_date_loant;
     private javax.swing.JLabel genre_bookl;
     private javax.swing.JTextField genre_bookt;
     private javax.swing.JLabel genre_journall;
@@ -826,14 +926,17 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel issue_No_magazinel;
     private javax.swing.JTextField issue_No_magazinet;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton loan_bookb;
     private javax.swing.JPanel loans_panel;
     private javax.swing.JLabel majorl;
     private javax.swing.JTextField majort;
     private javax.swing.JPanel members_panel;
+    private javax.swing.JTextField montht;
     private javax.swing.JLabel name_student_memberl;
     private javax.swing.JTextField name_student_membert;
     private javax.swing.JLabel name_studentl;
@@ -860,5 +963,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField version_journalt;
     private javax.swing.JLabel version_magazinel;
     private javax.swing.JTextField version_magazinet;
+    private javax.swing.JTextField yeart;
     // End of variables declaration//GEN-END:variables
 }

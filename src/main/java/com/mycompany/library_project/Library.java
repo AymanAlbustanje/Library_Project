@@ -137,6 +137,7 @@ public class Library {
         return result.toString();
     }
     
+    
     public void addJournal(Journal journal) {
         journals.add(journal);
     }
@@ -147,6 +148,8 @@ public class Library {
 
     public void addAuthor(Author author) {
     authors.add(author);
+    
+    
     
 }
     public Author getAuthorByName(String authorName) {
